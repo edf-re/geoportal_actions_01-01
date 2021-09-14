@@ -1,0 +1,33 @@
+name: challenge1
+
+on: push
+
+jobs:
+  ubuntu:
+    name: ubuntu
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step two
+        run: date "+%H:%M:%S   %d/%m/%y"
+
+  windows:
+    name: windows
+    runs-on: windows-latest
+    steps:
+      - name: Step two
+        run: Get-Date
+
+  macos:
+    name: macos
+    runs-on: macos-latest
+    steps:
+      - name: Step two
+        run: date
+
+  depends:
+    needs: [ubuntu, windows, macos]
+    name: Fourth job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step two
+        run: date "+%H:%M:%S   %d/%m/%y"
